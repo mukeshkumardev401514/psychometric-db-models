@@ -1,0 +1,8 @@
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+CREATE TABLE IF NOT EXISTS schema_migrations (
+    version VARCHAR(20) PRIMARY KEY,
+    filename VARCHAR(255) NOT NULL UNIQUE,
+    checksum VARCHAR(64) NOT NULL,
+    applied_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
